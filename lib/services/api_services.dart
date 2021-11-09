@@ -14,7 +14,8 @@ class ApiServices {
   static const Duration timeout = Duration(seconds: 20);
   static const String _baseUrl =
       'https://api.openweathermap.org/data/2.5/weather?';
-  static String apiKey = '25651f476b195031e666fc17a707deb9';
+  static String apiKey =
+      '25651f476b195031e666fc17a707deb9'; //Please add key here
 
   Future getCityWeather(String city) async {
     try {
