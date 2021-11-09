@@ -1,0 +1,22 @@
+{
+    "sourceFile": "lib/controller/weather_controller.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1636423152396,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636423245926,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,8 @@\n         return change(storeData, status: RxStatus.success());\r\n       } else {\r\n         return change(storeData, status: RxStatus.error(\"Server error\"));\r\n       }\r\n-    } on SocketException {\r\n     } catch (err) {\r\n       return change(storeData!, status: RxStatus.error(err.toString()));\r\n     }\r\n   }\r\n"
+                }
+            ],
+            "date": 1636423152396,
+            "name": "Commit-0",
+            "content": "import 'dart:async';\r\nimport 'package:flutter/material.dart';\r\nimport 'package:get/get.dart';\r\nimport 'package:geolocator/geolocator.dart';\r\nimport 'package:testing/constant/temperature_constant.dart';\r\nimport 'package:testing/model/weather_model.dart';\r\nimport 'package:testing/permission/location_permission.dart';\r\nimport 'dart:io';\r\nimport 'package:http/http.dart' as http;\r\nimport 'package:testing/services/internet_service.dart';\r\n\r\nString weatherUrl = \"\";\r\n\r\nclass WeatherController extends GetxController\r\n    with StateMixin<WeatherCountryModel> {\r\n  WeatherCountryModel? storeData = WeatherCountryModel();\r\n\r\n  String? weatherIcon;\r\n\r\n  Future online() async {\r\n    var response = await http.Client().get(Uri.parse(\r\n        \"https://api.openweathermap.org/data/2.5/weather?lat=$latitude&lon=$longitude&appid=25651f476b195031e666fc17a707deb9&units=metric\"));\r\n    try {\r\n      if (response.statusCode == 200) {\r\n        storeData = weatherModelFromJson(response.body);\r\n        print(response.body);\r\n        if (storeData!.weather!.isEmpty) {\r\n          return change(storeData, status: RxStatus.empty());\r\n        }\r\n        weatherIcon = getWeatherIcon(storeData!.weather![0].id!);\r\n        return change(storeData, status: RxStatus.success());\r\n      } else {\r\n        return change(storeData, status: RxStatus.error(\"Server error\"));\r\n      }\r\n    } on SocketException {\r\n    } catch (err) {\r\n      return change(storeData!, status: RxStatus.error(err.toString()));\r\n    }\r\n  }\r\n}\r\n"
+        }
+    ]
+}

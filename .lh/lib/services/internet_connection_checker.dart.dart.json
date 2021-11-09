@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/services/internet_connection_checker.dart.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1636415885148,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636415927432,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,10 +2,10 @@\n import 'package:connectivity/connectivity.dart';\n \n import 'package:flutter/services.dart';\n import 'package:get/get.dart';\n-import 'package:superwizor/constant.dart';\n \n+\n class InternetConnectionChecker extends GetxService {\n   \n   int connectionType = 0;\n \n"
+                },
+                {
+                    "date": 1636478708952,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,12 +2,11 @@\n import 'package:connectivity/connectivity.dart';\n \n import 'package:flutter/services.dart';\n import 'package:get/get.dart';\n+import 'package:testing/constant/constant.dart';\n \n-\n class InternetConnectionChecker extends GetxService {\n-  \n   int connectionType = 0;\n \n   //Instance of Flutter Connectivity\n   final Connectivity _connectivity = Connectivity();\n@@ -25,34 +24,26 @@\n \n   // a method to get which connection result, if you we connected to internet or no if yes then which network\n \n   Future<void> GetConnectionType() async {\n-    print('i am internet checker');\n     var connectivityResult;\n     try {\n       connectivityResult = await (_connectivity.checkConnectivity());\n     } on PlatformException catch (e) {\n-      print(e);\n+      print(e.toString());\n     }\n     return _updateState(connectivityResult);\n   }\n \n-  // state update, of network, if you are connected to WIFI connectionType will get set to 1,\n-  // and update the state to the consumer of that variable.\n   _updateState(ConnectivityResult result) {\n     switch (result) {\n       case ConnectivityResult.wifi:\n-        //connectionType = 1;\n-        //update();\n         break;\n       case ConnectivityResult.mobile:\n-        //connectionType = 2;\n-        //update();\n         break;\n       case ConnectivityResult.none:\n         showErrorSnackbar('Please check internet connection');\n \n-        // update();\n         break;\n       default:\n         break;\n     }\n"
+                },
+                {
+                    "date": 1636478796673,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -40,9 +40,9 @@\n         break;\n       case ConnectivityResult.mobile:\n         break;\n       case ConnectivityResult.none:\n-        showErrorSnackbar('Please check internet connection');\n+        showErrorSnackBar('Please check internet connection');\n \n         break;\n       default:\n         break;\n"
+                }
+            ],
+            "date": 1636415885148,
+            "name": "Commit-0",
+            "content": "import 'dart:async';\nimport 'package:connectivity/connectivity.dart';\n\nimport 'package:flutter/services.dart';\nimport 'package:get/get.dart';\nimport 'package:superwizor/constant.dart';\n\nclass InternetConnectionChecker extends GetxService {\n  \n  int connectionType = 0;\n\n  //Instance of Flutter Connectivity\n  final Connectivity _connectivity = Connectivity();\n\n  //Stream to keep listening to network change state\n  StreamSubscription? _streamSubscription;\n\n  @override\n  void onInit() {\n    GetConnectionType();\n    _streamSubscription =\n        _connectivity.onConnectivityChanged.listen(_updateState);\n    super.onInit();\n  }\n\n  // a method to get which connection result, if you we connected to internet or no if yes then which network\n\n  Future<void> GetConnectionType() async {\n    print('i am internet checker');\n    var connectivityResult;\n    try {\n      connectivityResult = await (_connectivity.checkConnectivity());\n    } on PlatformException catch (e) {\n      print(e);\n    }\n    return _updateState(connectivityResult);\n  }\n\n  // state update, of network, if you are connected to WIFI connectionType will get set to 1,\n  // and update the state to the consumer of that variable.\n  _updateState(ConnectivityResult result) {\n    switch (result) {\n      case ConnectivityResult.wifi:\n        //connectionType = 1;\n        //update();\n        break;\n      case ConnectivityResult.mobile:\n        //connectionType = 2;\n        //update();\n        break;\n      case ConnectivityResult.none:\n        showErrorSnackbar('Please check internet connection');\n\n        // update();\n        break;\n      default:\n        break;\n    }\n  }\n\n  @override\n  void onClose() {\n    //stop listening to network state when app is closed\n    _streamSubscription?.cancel();\n  }\n}\n"
+        }
+    ]
+}

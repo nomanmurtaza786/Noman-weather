@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/binding/binding.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1636419396837,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1636419396837,
+            "name": "Commit-0",
+            "content": "import 'package:get/get.dart';\r\nimport 'package:testing/controller/weather_controller.dart';\r\nimport 'package:testing/services/internet_connection_checker.dart.dart';\r\n\r\nclass DataBinding extends Bindings {\r\n  @override\r\n  void dependencies() {\r\n    // TODO: implement dependencies\r\n    Get.lazyPut(() => WeatherController(), fenix: true);\r\n    Get.put(InternetConnectionChecker(), permanent: true);\r\n  }\r\n}\r\n"
+        }
+    ]
+}

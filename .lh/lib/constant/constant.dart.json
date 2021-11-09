@@ -1,0 +1,30 @@
+{
+    "sourceFile": "lib/constant/constant.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 3,
+            "patches": [
+                {
+                    "date": 1636419250416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636419799193,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,11 +6,13 @@\n const Color kPrimaryDarkColor = Colors.black;\r\n const Color kSecondaryDarkColor = Color(0xff28282B);\r\n const Color kErrorColor = Color(0xffB00020);\r\n \r\n+const String apiKey = '5a6241e32f2899514aedb390ee30718a';\r\n+\r\n showErrorSnackbar(String message) {\r\n   Get.snackbar('Error', message.toString(),\r\n       backgroundColor: kErrorColor,\r\n       duration: 2.seconds,\r\n       snackPosition: SnackPosition.BOTTOM,\r\n-      margin: EdgeInsets.symmetric(vertical: 10));\r\n+      margin: const EdgeInsets.symmetric(vertical: 10));\r\n }\r\n"
+                },
+                {
+                    "date": 1636483188978,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,13 +6,16 @@\n const Color kPrimaryDarkColor = Colors.black;\r\n const Color kSecondaryDarkColor = Color(0xff28282B);\r\n const Color kErrorColor = Color(0xffB00020);\r\n \r\n-const String apiKey = '5a6241e32f2899514aedb390ee30718a';\r\n-\r\n-showErrorSnackbar(String message) {\r\n-  Get.snackbar('Error', message.toString(),\r\n-      backgroundColor: kErrorColor,\r\n-      duration: 2.seconds,\r\n-      snackPosition: SnackPosition.BOTTOM,\r\n-      margin: const EdgeInsets.symmetric(vertical: 10));\r\n+showErrorSnackBar(String message) {\r\n+  Get.snackbar(\r\n+    'Error',\r\n+    message.toString(),\r\n+    colorText: Colors.white,\r\n+    backgroundColor: kErrorColor,\r\n+    duration: 5.seconds,\r\n+    snackPosition: SnackPosition.BOTTOM,\r\n+    margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),\r\n+    isDismissible: true,\r\n+  );\r\n }\r\n"
+                },
+                {
+                    "date": 1636483196141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n     'Error',\r\n     message.toString(),\r\n     colorText: Colors.white,\r\n     backgroundColor: kErrorColor,\r\n-    duration: 5.seconds,\r\n+    duration: 3.seconds,\r\n     snackPosition: SnackPosition.BOTTOM,\r\n     margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 5),\r\n     isDismissible: true,\r\n   );\r\n"
+                }
+            ],
+            "date": 1636419250416,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\nimport 'package:get/get.dart';\r\n\r\nconst Color kPrimaryLightColor = Color(0xFFFFFFFF);\r\nconst Color kSecondaryLightColor = Colors.orange;\r\nconst Color kPrimaryDarkColor = Colors.black;\r\nconst Color kSecondaryDarkColor = Color(0xff28282B);\r\nconst Color kErrorColor = Color(0xffB00020);\r\n\r\nshowErrorSnackbar(String message) {\r\n  Get.snackbar('Error', message.toString(),\r\n      backgroundColor: kErrorColor,\r\n      duration: 2.seconds,\r\n      snackPosition: SnackPosition.BOTTOM,\r\n      margin: EdgeInsets.symmetric(vertical: 10));\r\n}\r\n"
+        }
+    ]
+}

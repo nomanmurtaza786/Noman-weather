@@ -1,0 +1,46 @@
+{
+    "sourceFile": "lib/services/location_services.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 7,
+            "patches": [
+                {
+                    "date": 1636421819472,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636422021797,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,45 @@\n import 'package:geolocator/geolocator.dart';\n+import 'package:testing/constant/constant.dart';\n \n Class LocationService{\n \n   //Geoloaction\n   Future<Position> getLocation() async{\n-    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.low);\n+\n+bool serviceEnabled;\n+    LocationPermission permission;\n+\n+    // Test if location services are enabled.\n+    serviceEnabled = await Geolocator.isLocationServiceEnabled();\n+    if (!serviceEnabled) {\n+      // Location services are not enabled don't continue\n+      // accessing the position and request users of the\n+      // App to enable the location services.\n+      Get.snackbar('Location Service', 'Location services are disabled.',\n+          backgroundColor: kErrorColor,\n+          snackPosition: SnackPosition.BOTTOM,\n+          margin: EdgeInsets.symmetric(vertical: 10));\n+\n+      return Future.error('Location services are disabled.');\n+    }\n+\n+    permission = await Geolocator.checkPermission();\n+    if (permission == LocationPermission.denied) {\n+      permission = await Geolocator.requestPermission();\n+      if (permission == LocationPermission.denied) {\n+        \n+showErrorSnackbar('Location permission is denied.');\n+        return Future.error('Location permissions are denied');\n+      }\n+    }\n+\n+    if (permission == LocationPermission.deniedForever) {\n+  \n+    }\n+\n+\n+    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);\n     return position;\n   }\n \n \n"
+                },
+                {
+                    "date": 1636422080897,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,14 +27,16 @@\n     if (permission == LocationPermission.denied) {\n       permission = await Geolocator.requestPermission();\n       if (permission == LocationPermission.denied) {\n         \n-showErrorSnackbar('Location permission is denied.');\n+     showErrorSnackbar('Location permission is denied.');\n         return Future.error('Location permissions are denied');\n       }\n     }\n \n     if (permission == LocationPermission.deniedForever) {\n+      \n+      showErrorSnackbar('Location permission is denied forever.');\n   \n     }\n \n \n"
+                },
+                {
+                    "date": 1636422104768,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -35,9 +35,9 @@\n \n     if (permission == LocationPermission.deniedForever) {\n       \n       showErrorSnackbar('Location permission is denied forever.');\n-  \n+  return Future.error('Location permissions are denied forever.');\n     }\n \n \n     Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);\n"
+                },
+                {
+                    "date": 1636422170732,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,12 +14,9 @@\n     if (!serviceEnabled) {\n       // Location services are not enabled don't continue\n       // accessing the position and request users of the\n       // App to enable the location services.\n-      Get.snackbar('Location Service', 'Location services are disabled.',\n-          backgroundColor: kErrorColor,\n-          snackPosition: SnackPosition.BOTTOM,\n-          margin: EdgeInsets.symmetric(vertical: 10));\n+      showErrorSnackbar('Location services are not enabled');\n \n       return Future.error('Location services are disabled.');\n     }\n \n"
+                },
+                {
+                    "date": 1636422228084,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,10 @@\n import 'package:geolocator/geolocator.dart';\n import 'package:testing/constant/constant.dart';\n \n-Class LocationService{\n+Class LocationServicess{\n \n-  //Geoloaction\n+ \n   Future<Position> getLocation() async{\n \n bool serviceEnabled;\n     LocationPermission permission;\n"
+                },
+                {
+                    "date": 1636422304234,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,45 +1,36 @@\n import 'package:geolocator/geolocator.dart';\n import 'package:testing/constant/constant.dart';\n \n-Class LocationServicess{\n+Future<Position> getLocation() async {\n+  bool serviceEnabled;\n+  LocationPermission permission;\n \n- \n-  Future<Position> getLocation() async{\n+  // Test if location services are enabled.\n+  serviceEnabled = await Geolocator.isLocationServiceEnabled();\n+  if (!serviceEnabled) {\n+    // Location services are not enabled don't continue\n+    // accessing the position and request users of the\n+    // App to enable the location services.\n+    showErrorSnackbar('Location services are not enabled');\n \n-bool serviceEnabled;\n-    LocationPermission permission;\n+    return Future.error('Location services are disabled.');\n+  }\n \n-    // Test if location services are enabled.\n-    serviceEnabled = await Geolocator.isLocationServiceEnabled();\n-    if (!serviceEnabled) {\n-      // Location services are not enabled don't continue\n-      // accessing the position and request users of the\n-      // App to enable the location services.\n-      showErrorSnackbar('Location services are not enabled');\n-\n-      return Future.error('Location services are disabled.');\n-    }\n-\n-    permission = await Geolocator.checkPermission();\n+  permission = await Geolocator.checkPermission();\n+  if (permission == LocationPermission.denied) {\n+    permission = await Geolocator.requestPermission();\n     if (permission == LocationPermission.denied) {\n-      permission = await Geolocator.requestPermission();\n-      if (permission == LocationPermission.denied) {\n-        \n-     showErrorSnackbar('Location permission is denied.');\n-        return Future.error('Location permissions are denied');\n-      }\n\\ No newline at end of file\n+      showErrorSnackbar('Location permission is denied.');\n+      return Future.error('Location permissions are denied');\n     }\n+  }\n \n-    if (permission == LocationPermission.deniedForever) {\n-      \n-      showErrorSnackbar('Location permission is denied forever.');\n-  return Future.error('Location permissions are denied forever.');\n-    }\n-\n-\n-    Position position = await Geolocator.getCurrentPosition(desiredAccuracy: LocationAccuracy.low);\n-    return position;\n+  if (permission == LocationPermission.deniedForever) {\n+    showErrorSnackbar('Location permission is denied forever.');\n+    return Future.error('Location permissions are denied forever.');\n   }\n \n-\n-}\n+  Position position = await Geolocator.getCurrentPosition(\n+      desiredAccuracy: LocationAccuracy.low);\n+  return position;\n+}\n"
+                },
+                {
+                    "date": 1636422342059,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import 'package:geolocator/geolocator.dart';\n import 'package:testing/constant/constant.dart';\n \n-Future<Position> getLocation() async {\n+Future<Position> getUserLocation() async {\n   bool serviceEnabled;\n   LocationPermission permission;\n \n   // Test if location services are enabled.\n"
+                }
+            ],
+            "date": 1636421819472,
+            "name": "Commit-0",
+            "content": "import 'package:geolocator/geolocator.dart';\n\nClass LocationService{\n\n  //Geoloaction\n  Future<Position> getLocation() async{\n    Position position = await Geolocator().getCurrentPosition(desiredAccuracy: LocationAccuracy.low);\n    return position;\n  }\n\n\n}"
+        }
+    ]
+}

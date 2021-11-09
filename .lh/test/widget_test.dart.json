@@ -1,0 +1,102 @@
+{
+    "sourceFile": "test/widget_test.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 21,
+            "patches": [
+                {
+                    "date": 1636478708948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636478874057,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,11 @@\n+// This is a basic Flutter widget test.\r\n+//\r\n+// To perform an interaction with a widget in your test, use the WidgetTester\r\n+// utility that Flutter provides. For example, you can send tap and scroll\r\n+// gestures. You can also use WidgetTester to find child widgets in the widget\r\n+// tree, read text, and verify that the values of widget properties are correct.\r\n+\r\n import 'package:flutter/material.dart';\r\n import 'package:flutter_test/flutter_test.dart';\r\n \r\n import 'package:testing/main.dart';\r\n@@ -8,10 +15,9 @@\n     // Build our app and trigger a frame.\r\n     await tester.pumpWidget(MyApp());\r\n \r\n     // Verify that our counter starts at 0.\r\n-    expect(find.text('0'), findsOneWidget);\r\n-    expect(find.text('1'), findsNothing);\r\n+    expect(find.text('Search here'), findsOneWidget);\r\n \r\n     // Tap the '+' icon and trigger a frame.\r\n     await tester.tap(find.byIcon(Icons.add));\r\n     await tester.pump();\r\n"
+                },
+                {
+                    "date": 1636478904812,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,12 +18,8 @@\n     // Verify that our counter starts at 0.\r\n     expect(find.text('Search here'), findsOneWidget);\r\n \r\n     // Tap the '+' icon and trigger a frame.\r\n-    await tester.tap(find.byIcon(Icons.add));\r\n-    await tester.pump();\r\n \r\n     // Verify that our counter has incremented.\r\n-    expect(find.text('0'), findsNothing);\r\n-    expect(find.text('1'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636478984537,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     // Build our app and trigger a frame.\r\n     await tester.pumpWidget(MyApp());\r\n \r\n     // Verify that our counter starts at 0.\r\n-    expect(find.text('Search here'), findsOneWidget);\r\n+    expect(find.text('Search '), findsOneWidget);\r\n \r\n     // Tap the '+' icon and trigger a frame.\r\n \r\n     // Verify that our counter has incremented.\r\n"
+                },
+                {
+                    "date": 1636479017256,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,9 @@\n     // Build our app and trigger a frame.\r\n     await tester.pumpWidget(MyApp());\r\n \r\n     // Verify that our counter starts at 0.\r\n-    expect(find.text('Search '), findsOneWidget);\r\n+    expect(find.text('Search here'), findsOneWidget);\r\n \r\n     // Tap the '+' icon and trigger a frame.\r\n \r\n     // Verify that our counter has incremented.\r\n"
+                },
+                {
+                    "date": 1636479160359,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,9 @@\n     await tester.pumpWidget(MyApp());\r\n \r\n     // Verify that our counter starts at 0.\r\n     expect(find.text('Search here'), findsOneWidget);\r\n+    expect(find.text('Show Details'), findsOneWidget);\r\n \r\n     // Tap the '+' icon and trigger a frame.\r\n \r\n     // Verify that our counter has incremented.\r\n"
+                },
+                {
+                    "date": 1636479177650,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,9 @@\n     await tester.pumpWidget(MyApp());\r\n \r\n     // Verify that our counter starts at 0.\r\n     expect(find.text('Search here'), findsOneWidget);\r\n-    expect(find.text('Show Details'), findsOneWidget);\r\n+    expect(find.text('View Details'), findsOneWidget);\r\n \r\n     // Tap the '+' icon and trigger a frame.\r\n \r\n     // Verify that our counter has incremented.\r\n"
+                },
+                {
+                    "date": 1636482073157,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,9 +16,8 @@\n     await tester.pumpWidget(MyApp());\r\n \r\n     // Verify that our counter starts at 0.\r\n     expect(find.text('Search here'), findsOneWidget);\r\n-    expect(find.text('View Details'), findsOneWidget);\r\n \r\n     // Tap the '+' icon and trigger a frame.\r\n \r\n     // Verify that our counter has incremented.\r\n"
+                },
+                {
+                    "date": 1636482148579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,7 @@\n \r\n     // Verify that our counter starts at 0.\r\n     expect(find.text('Search here'), findsOneWidget);\r\n \r\n-    // Tap the '+' icon and trigger a frame.\r\n-\r\n     // Verify that our counter has incremented.\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636483432274,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,13 +11,10 @@\n import 'package:testing/main.dart';\r\n \r\n void main() {\r\n   testWidgets('Counter increments smoke test', (WidgetTester tester) async {\r\n-    // Build our app and trigger a frame.\r\n     await tester.pumpWidget(MyApp());\r\n \r\n-    // Verify that our counter starts at 0.\r\n+    var textfield = find.byType(TextField);\r\n     expect(find.text('Search here'), findsOneWidget);\r\n-\r\n-    // Verify that our counter has incremented.\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636483440619,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,7 +14,8 @@\n   testWidgets('Counter increments smoke test', (WidgetTester tester) async {\r\n     await tester.pumpWidget(MyApp());\r\n \r\n     var textfield = find.byType(TextField);\r\n+    expect(textfield, findsOneWidget);\r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636483503905,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,8 +14,12 @@\n   testWidgets('Counter increments smoke test', (WidgetTester tester) async {\r\n     await tester.pumpWidget(MyApp());\r\n \r\n     var textfield = find.byType(TextField);\r\n+    var button = find.byType(ElevatedButton);\r\n+\r\n     expect(textfield, findsOneWidget);\r\n+    expect(button, findsOneWidget);\r\n+\r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636483562458,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -10,9 +10,9 @@\n \r\n import 'package:testing/main.dart';\r\n \r\n void main() {\r\n-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {\r\n+  testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n     await tester.pumpWidget(MyApp());\r\n \r\n     var textfield = find.byType(TextField);\r\n     var button = find.byType(ElevatedButton);\r\n"
+                },
+                {
+                    "date": 1636483724466,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n     await tester.pumpWidget(MyApp());\r\n \r\n     var textfield = find.byType(TextField);\r\n-    var button = find.byType(ElevatedButton);\r\n+    //var button = find.byType(ElevatedButton);\r\n \r\n     expect(textfield, findsOneWidget);\r\n     expect(button, findsOneWidget);\r\n \r\n"
+                },
+                {
+                    "date": 1636483730477,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n     var textfield = find.byType(TextField);\r\n     //var button = find.byType(ElevatedButton);\r\n \r\n     expect(textfield, findsOneWidget);\r\n-    expect(button, findsOneWidget);\r\n+    // expect(button, findsOneWidget);\r\n \r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636483745429,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n     await tester.pumpWidget(MyApp());\r\n \r\n     var textfield = find.byType(TextField);\r\n-    //var button = find.byType(ElevatedButton);\r\n+    var button = find.byType(ElevatedButton);\r\n \r\n     expect(textfield, findsOneWidget);\r\n     // expect(button, findsOneWidget);\r\n \r\n"
+                },
+                {
+                    "date": 1636483755637,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n     var textfield = find.byType(TextField);\r\n     var button = find.byType(ElevatedButton);\r\n \r\n     expect(textfield, findsOneWidget);\r\n-    // expect(button, findsOneWidget);\r\n+    expect(button, findsOneWidget);\r\n \r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636483783497,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -17,9 +17,9 @@\n     var textfield = find.byType(TextField);\r\n     var button = find.byType(ElevatedButton);\r\n \r\n     expect(textfield, findsOneWidget);\r\n-    expect(button, findsOneWidget);\r\n+    expect(button, findsNothing);\r\n \r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636483908257,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,12 +14,11 @@\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n     await tester.pumpWidget(MyApp());\r\n \r\n     var textfield = find.byType(TextField);\r\n-    var button = find.byType(ElevatedButton);\r\n \r\n     expect(textfield, findsOneWidget);\r\n-    expect(button, findsNothing);\r\n \r\n     expect(find.text('Search here'), findsOneWidget);\r\n+    expect(find.text('Wind Speed'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636484048208,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,12 +8,13 @@\n import 'package:flutter/material.dart';\r\n import 'package:flutter_test/flutter_test.dart';\r\n \r\n import 'package:testing/main.dart';\r\n+import 'package:testing/screen/weather_home_screen.dart';\r\n \r\n void main() {\r\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n-    await tester.pumpWidget(MyApp());\r\n+    await tester.pumpWidget(const WeatherScreen());\r\n \r\n     var textfield = find.byType(TextField);\r\n \r\n     expect(textfield, findsOneWidget);\r\n"
+                },
+                {
+                    "date": 1636484072460,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,7 +19,6 @@\n \r\n     expect(textfield, findsOneWidget);\r\n \r\n     expect(find.text('Search here'), findsOneWidget);\r\n-    expect(find.text('Wind Speed'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636484099929,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n import 'package:testing/screen/weather_home_screen.dart';\r\n \r\n void main() {\r\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n-    await tester.pumpWidget(const WeatherScreen());\r\n+    await tester.pumpWidget(MyApp());\r\n \r\n     var textfield = find.byType(TextField);\r\n \r\n     expect(textfield, findsOneWidget);\r\n"
+                }
+            ],
+            "date": 1636478708948,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\nimport 'package:flutter_test/flutter_test.dart';\r\n\r\nimport 'package:testing/main.dart';\r\n\r\nvoid main() {\r\n  testWidgets('Counter increments smoke test', (WidgetTester tester) async {\r\n    // Build our app and trigger a frame.\r\n    await tester.pumpWidget(MyApp());\r\n\r\n    // Verify that our counter starts at 0.\r\n    expect(find.text('0'), findsOneWidget);\r\n    expect(find.text('1'), findsNothing);\r\n\r\n    // Tap the '+' icon and trigger a frame.\r\n    await tester.tap(find.byIcon(Icons.add));\r\n    await tester.pump();\r\n\r\n    // Verify that our counter has incremented.\r\n    expect(find.text('0'), findsNothing);\r\n    expect(find.text('1'), findsOneWidget);\r\n  });\r\n}\r\n"
+        }
+    ]
+}

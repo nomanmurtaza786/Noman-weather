@@ -1,0 +1,22 @@
+{
+    "sourceFile": "ios/Runner/Info.plist",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1636484389271,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636484477946,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,12 @@\n <?xml version=\"1.0\" encoding=\"UTF-8\"?>\n <!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n <plist version=\"1.0\">\n \t<dict>\n+\t\t<key>NSLocationWhenInUseUsageDescription</key>\n+\t\t<string>This app needs access to location when open.</string>\n+\t\t<key>NSLocationAlwaysUsageDescription</key>\n+\t\t<string>This app needs access to location when in the background.</string>\n \t\t<key>CFBundleDevelopmentRegion</key>\n \t\t<string>$(DEVELOPMENT_LANGUAGE)</string>\n \t\t<key>CFBundleExecutable</key>\n \t\t<string>$(EXECUTABLE_NAME)</string>\n"
+                }
+            ],
+            "date": 1636484389271,
+            "name": "Commit-0",
+            "content": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<!DOCTYPE plist PUBLIC \"-//Apple//DTD PLIST 1.0//EN\" \"http://www.apple.com/DTDs/PropertyList-1.0.dtd\">\n<plist version=\"1.0\">\n\t<dict>\n\t\t<key>CFBundleDevelopmentRegion</key>\n\t\t<string>$(DEVELOPMENT_LANGUAGE)</string>\n\t\t<key>CFBundleExecutable</key>\n\t\t<string>$(EXECUTABLE_NAME)</string>\n\t\t<key>CFBundleIdentifier</key>\n\t\t<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>\n\t\t<key>CFBundleInfoDictionaryVersion</key>\n\t\t<string>6.0</string>\n\t\t<key>CFBundleName</key>\n\t\t<string>Noman Weather</string>\n\t\t<key>CFBundlePackageType</key>\n\t\t<string>APPL</string>\n\t\t<key>CFBundleShortVersionString</key>\n\t\t<string>$(FLUTTER_BUILD_NAME)</string>\n\t\t<key>CFBundleSignature</key>\n\t\t<string>????</string>\n\t\t<key>CFBundleVersion</key>\n\t\t<string>$(FLUTTER_BUILD_NUMBER)</string>\n\t\t<key>LSRequiresIPhoneOS</key>\n\t\t<true/>\n\t\t<key>UILaunchStoryboardName</key>\n\t\t<string>LaunchScreen</string>\n\t\t<key>UIMainStoryboardFile</key>\n\t\t<string>Main</string>\n\t\t<key>UISupportedInterfaceOrientations</key>\n\t\t<array>\n\t\t\t<string>UIInterfaceOrientationPortrait</string>\n\t\t\t<string>UIInterfaceOrientationLandscapeLeft</string>\n\t\t\t<string>UIInterfaceOrientationLandscapeRight</string>\n\t\t</array>\n\t\t<key>UISupportedInterfaceOrientations~ipad</key>\n\t\t<array>\n\t\t\t<string>UIInterfaceOrientationPortrait</string>\n\t\t\t<string>UIInterfaceOrientationPortraitUpsideDown</string>\n\t\t\t<string>UIInterfaceOrientationLandscapeLeft</string>\n\t\t\t<string>UIInterfaceOrientationLandscapeRight</string>\n\t\t</array>\n\t\t<key>UIViewControllerBasedStatusBarAppearance</key>\n\t\t<false/>\n\t\t<key>UIStatusBarHidden</key>\n\t\t<false/>\n\t</dict>\n</plist>"
+        }
+    ]
+}
