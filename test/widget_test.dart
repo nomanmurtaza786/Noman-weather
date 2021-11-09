@@ -1,0 +1,24 @@
+// This is a basic Flutter widget test.
+//
+// To perform an interaction with a widget in your test, use the WidgetTester
+// utility that Flutter provides. For example, you can send tap and scroll
+// gestures. You can also use WidgetTester to find child widgets in the widget
+// tree, read text, and verify that the values of widget properties are correct.
+
+import 'package:flutter/material.dart';
+import 'package:flutter_test/flutter_test.dart';
+
+import 'package:testing/main.dart';
+import 'package:testing/screen/weather_home_screen.dart';
+
+void main() {
+  testWidgets('Home Screen Components', (WidgetTester tester) async {
+    await tester.pumpWidget(MyApp());
+
+    var textfield = find.byType(TextField);
+
+    expect(textfield, findsOneWidget);
+
+    expect(find.text('Search here'), findsOneWidget);
+  });
+}
