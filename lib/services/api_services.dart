@@ -21,9 +21,10 @@ class ApiServices {
       bool _connection = await InternetConnectionChecker().hasConnection;
 
       if (!_connection) {
-        return showErrorSnackBar('No Internet ');
+        return showErrorSnackBar('No Internet Connection');
       }
-      http.Response response = await http.get(Uri.parse('${_baseUrl}q=$city&appid=$apiKey&units=metric'));
+      http.Response response = await http
+          .get(Uri.parse('${_baseUrl}q=$city&appid=$apiKey&units=metric'));
       return _processResponse(response);
     } on TimeoutException catch (_) {
       throw Exception('Timeout');
@@ -36,6 +37,11 @@ class ApiServices {
 
   Future getLocationWeather() async {
     try {
+      bool _connection = await InternetConnectionChecker().hasConnection;
+
+      if (!_connection) {
+        return showErrorSnackBar('No Internet Connection');
+      }
       Position? position = await getUserLocation();
 
       http.Response response = await http.get(Uri.parse(

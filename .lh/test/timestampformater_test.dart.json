@@ -1,0 +1,22 @@
+{
+    "sourceFile": "test/timestampformater_test.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1636498814452,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636499630511,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,6 @@\n import 'package:flutter_test/flutter_test.dart';\n \n-import 'package:testing/main.dart';\n import 'package:testing/screen/weather_detail_screen.dart';\n \n void main() {\n   test(\n"
+                }
+            ],
+            "date": 1636498814452,
+            "name": "Commit-0",
+            "content": "import 'package:flutter_test/flutter_test.dart';\n\nimport 'package:testing/main.dart';\nimport 'package:testing/screen/weather_detail_screen.dart';\n\nvoid main() {\n  test(\n    'TimeStamp formatting test',\n    () {\n      var timeTest = timeConversion(1636481085);\n      prints(timeTest);\n      expect(timeTest, '06:04 PM');\n    },\n  );\n}\n"
+        }
+    ]
+}

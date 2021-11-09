@@ -1,0 +1,22 @@
+{
+    "sourceFile": "test/cityApi_test.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 1,
+            "patches": [
+                {
+                    "date": 1636500699401,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636500772134,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import 'package:testing/services/api_services.dart';\n \n void main() {\n   test(\n-    'Api test',\n+    'Getcity Api test',\n     () async {\n       final _apiTest = ApiServices();\n       WeatherModel _res = await _apiTest.getCityWeather('sydney');\n \n"
+                }
+            ],
+            "date": 1636500699401,
+            "name": "Commit-0",
+            "content": "import 'package:flutter_test/flutter_test.dart';\nimport 'package:testing/model/weather_model.dart';\nimport 'package:testing/services/api_services.dart';\n\nvoid main() {\n  test(\n    'Api test',\n    () async {\n      final _apiTest = ApiServices();\n      WeatherModel _res = await _apiTest.getCityWeather('sydney');\n\n      expect(_res.name, 'Sydney');\n      expect(_res.cod, 200);\n    },\n  );\n}\n"
+        }
+    ]
+}

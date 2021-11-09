@@ -37,79 +37,111 @@ class WeatherScreen extends GetView<WeatherController> {
                     contentPadding: EdgeInsets.only(left: 20, bottom: 0),
                     border: InputBorder.none,
                   ),
-                ).card.roundedLg.elevation(4).make().marginOnly(right: 15,top: 15).expand(),
+                )
+                    .card
+                    .roundedLg
+                    .elevation(4)
+                    .make()
+                    .marginOnly(right: 15, top: 15)
+                    .expand(),
                 GestureDetector(
-                    onTap: (){
+                    onTap: () {
                       controller.getLocationWeather();
                     },
-                    child: Image.asset("assets/location.png",height: 40,width: 40,color: kSecondaryLightColor,).marginOnly(top: 16)),
+                    child: Image.asset(
+                      "assets/location.png",
+                      height: 40,
+                      width: 40,
+                      color: kSecondaryLightColor,
+                    ).marginOnly(top: 16)),
               ],
             ),
             Expanded(
-              child: controller.obx((data) {
-                final stores = controller.storeData;
-                var s = stores!.weather!.single.icon;
-                return Column(
-                  children: [
-                    const Spacer(),
-                    s!.isEmpty?  Image.network(
-                      "http://openweathermap.org/img/wn/$s@2x.png",
-                    ):const SizedBox.shrink(),
-                    Stack(
-                      clipBehavior: Clip.none,
-                      children: [
-                        (stores.main?.temp ?? 0).toInt()
-                            .toString()
-                            .text.headline1(context)
-                            .make(),
-                        Positioned(
-                            right: -25,
-                            top: 5,
-                            child: "o".text.size(30).bold.make()),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        TemperatureMinMax(
-                          name: "min", temp: (stores.main?.tempMin ?? 0).toInt(),),
-                        const SizedBox(
-                          width: 30,
-                        ),
-                        TemperatureMinMax(
-                          name: "max",temp: (stores.main?.tempMax?? 0).toInt(),),
-                      ],
-                    ),
-                    const SizedBox(height: 10,),
-                    Wrap(
-                      children: [
-                        (stores.name.toString() +', '+ stores.sys!.country.toString()).text.headline4(context).make(),
-                      ],
-                    ),
-                    const Spacer(),
-                    WeatherTile(
-                      title: "Wind Speed",
-                      subtitle: (stores.wind?.speed?? 0).toString() + "km/h",
-                    ),
-                    const SizedBox(height: 15,),
-                    WeatherTile(
-                      title: "Feels Like",
-                      subtitle: (stores.main?.feelsLike ?? 0).toString(),
-                    ),
-                    ElevatedButton(
-                        style: ButtonStyle(
-                          backgroundColor: MaterialStateProperty.all<Color>(kSecondaryLightColor),
-                        ),
-                        onPressed: () {
-                          Get.to(() =>WeatherDetailScreen(
-                            weatherData: stores,
-                          ));
-                        },
-                        child: "View Details".text.make())
-                        .marginSymmetric(vertical: 15)
-                  ],
-                );
-              },
+              child: controller.obx(
+                (data) {
+                  final stores = controller.storeData;
+                  var s = stores!.weather!.single.icon;
+                  return Column(
+                    children: [
+                      const Spacer(),
+                      s!.isEmpty
+                          ? Image.network(
+                              "http://openweathermap.org/img/wn/$s@2x.png",
+                            )
+                          : const SizedBox.shrink(),
+                      Stack(
+                        clipBehavior: Clip.none,
+                        children: [
+                          (stores.main?.temp ?? 0)
+                              .toInt()
+                              .toString()
+                              .text
+                              .headline1(context)
+                              .make(),
+                          Positioned(
+                              right: -25,
+                              top: 5,
+                              child: "o".text.size(30).bold.make()),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TemperatureMinMax(
+                            name: "min",
+                            temp: (stores.main?.tempMin ?? 0).toInt(),
+                          ),
+                          const SizedBox(
+                            width: 30,
+                          ),
+                          TemperatureMinMax(
+                            name: "max",
+                            temp: (stores.main?.tempMax ?? 0).toInt(),
+                          ),
+                        ],
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Wrap(
+                        children: [
+                          (stores.name.toString() +
+                                  ', ' +
+                                  stores.sys!.country.toString())
+                              .text
+                              .headline4(context)
+                              .make(),
+                        ],
+                      ),
+                      const Spacer(),
+                      WeatherTile(
+                        title: "Wind Speed",
+                        subtitle: (stores.wind?.speed ?? 0).toString() + "km/h",
+                      ),
+                      const SizedBox(
+                        height: 15,
+                      ),
+                      WeatherTile(
+                        title: "Feels Like",
+                        subtitle: (stores.main?.feelsLike ?? 0).toString(),
+                      ),
+                      ElevatedButton(
+                              key: const Key("ViewDetails"),
+                              style: ButtonStyle(
+                                backgroundColor:
+                                    MaterialStateProperty.all<Color>(
+                                        kSecondaryLightColor),
+                              ),
+                              onPressed: () {
+                                Get.to(() => WeatherDetailScreen(
+                                      weatherData: stores,
+                                    ));
+                              },
+                              child: "View Details".text.make())
+                          .marginSymmetric(vertical: 15)
+                    ],
+                  );
+                },
               ),
             ),
           ],

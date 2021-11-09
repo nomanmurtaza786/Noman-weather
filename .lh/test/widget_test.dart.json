@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 21,
+            "activePatchIndex": 29,
             "patches": [
                 {
                     "date": 1636478708948,
@@ -92,6 +92,38 @@
                 {
                     "date": 1636484099929,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n import 'package:testing/screen/weather_home_screen.dart';\r\n \r\n void main() {\r\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n-    await tester.pumpWidget(const WeatherScreen());\r\n+    await tester.pumpWidget(MyApp());\r\n \r\n     var textfield = find.byType(TextField);\r\n \r\n     expect(textfield, findsOneWidget);\r\n"
+                },
+                {
+                    "date": 1636485266968,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,7 +18,7 @@\n     var textfield = find.byType(TextField);\r\n \r\n     expect(textfield, findsOneWidget);\r\n \r\n-    expect(find.text('Search here'), findsOneWidget);\r\n+    expect(find.text('Search '), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636485287306,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,7 +18,7 @@\n     var textfield = find.byType(TextField);\r\n \r\n     expect(textfield, findsOneWidget);\r\n \r\n-    expect(find.text('Search '), findsOneWidget);\r\n+    expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636498814480,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,11 +14,10 @@\n void main() {\r\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n     await tester.pumpWidget(MyApp());\r\n \r\n-    var textfield = find.byType(TextField);\r\n+    var button = find.byKey(ValueKey('ViewDetails'));\r\n+    expect(button, findsOneWidget);\r\n \r\n-    expect(textfield, findsOneWidget);\r\n-\r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636498851659,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,10 +14,10 @@\n void main() {\r\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n     await tester.pumpWidget(MyApp());\r\n \r\n-    var button = find.byKey(ValueKey('ViewDetails'));\r\n-    expect(button, findsOneWidget);\r\n+    //var button = find.byKey(ValueKey('ViewDetails'));\r\n+    //expect(button, findsOneWidget);\r\n \r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636498974557,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,12 +12,12 @@\n import 'package:testing/screen/weather_home_screen.dart';\r\n \r\n void main() {\r\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n-    await tester.pumpWidget(MyApp());\r\n+    // await tester.pumpWidget(MyApp());\r\n \r\n-    //var button = find.byKey(ValueKey('ViewDetails'));\r\n-    //expect(button, findsOneWidget);\r\n+    var button = find.byKey(ValueKey('ViewDetails'));\r\n+    expect(button, findsOneWidget);\r\n \r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n }\r\n"
+                },
+                {
+                    "date": 1636499097635,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n void main() {\r\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n     // await tester.pumpWidget(MyApp());\r\n \r\n-    var button = find.byKey(ValueKey('ViewDetails'));\r\n+    var button = find.byKey(const ValueKey('ViewDetails'));\r\n     expect(button, findsOneWidget);\r\n \r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n"
+                },
+                {
+                    "date": 1636499247443,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,10 @@\n void main() {\r\n   testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n     // await tester.pumpWidget(MyApp());\r\n \r\n-    var button = find.byKey(const ValueKey('ViewDetails'));\r\n+    //var button = find.byKey(const ValueKey('ViewDetails'));\r\n+    var button = find.byType(ElevatedButton);\r\n     expect(button, findsOneWidget);\r\n \r\n     expect(find.text('Search here'), findsOneWidget);\r\n   });\r\n"
+                },
+                {
+                    "date": 1636500559922,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n import 'package:testing/main.dart';\r\n import 'package:testing/screen/weather_home_screen.dart';\r\n \r\n void main() {\r\n-  testWidgets('Home Screen Components', (WidgetTester tester) async {\r\n+  testWidgets('Home Screen ', (WidgetTester tester) async {\r\n     // await tester.pumpWidget(MyApp());\r\n \r\n     //var button = find.byKey(const ValueKey('ViewDetails'));\r\n     var button = find.byType(ElevatedButton);\r\n"
                 }
             ],
             "date": 1636478708948,

@@ -1,0 +1,54 @@
+{
+    "sourceFile": "test/api_test.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 9,
+            "patches": [
+                {
+                    "date": 1636499630413,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1636499655752,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,8 +5,9 @@\n   test(\n     'ApiTest',\n     () {\n       final _apiTest = ApiServices();\n-      expect(_apiTest.getCityWeather('sydney'), isInstanceOf<Future<String>>());\n+      expect(\n+          _apiTest.getCityWeather('sydney'), isInstanceOf<Future<dynamic>>());\n     },\n   );\n }\n"
+                },
+                {
+                    "date": 1636499753032,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,8 @@\n   test(\n     'ApiTest',\n     () {\n       final _apiTest = ApiServices();\n-      expect(\n-          _apiTest.getCityWeather('sydney'), isInstanceOf<Future<dynamic>>());\n+      expect(_apiTest.getCityWeather('sydne'), isInstanceOf<Future<dynamic>>());\n     },\n   );\n }\n"
+                },
+                {
+                    "date": 1636500138795,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,10 +3,11 @@\n \n void main() {\n   test(\n     'ApiTest',\n-    () {\n+    () async {\n       final _apiTest = ApiServices();\n-      expect(_apiTest.getCityWeather('sydne'), isInstanceOf<Future<dynamic>>());\n+      var _data = await _apiTest.getCityWeather('sydney');\n+      expect(_data, isNotNull);\n     },\n   );\n }\n"
+                },
+                {
+                    "date": 1636500253114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,15 @@\n import 'package:flutter_test/flutter_test.dart';\n+import 'package:testing/model/weather_model.dart';\n import 'package:testing/services/api_services.dart';\n \n void main() {\n   test(\n     'ApiTest',\n     () async {\n       final _apiTest = ApiServices();\n-      var _data = await _apiTest.getCityWeather('sydney');\n-      expect(_data, isNotNull);\n+      WeatherModel _res = await _apiTest.getCityWeather('sydney');\n+\n+      expect(_res.cod, 200);\n     },\n   );\n }\n"
+                },
+                {
+                    "date": 1636500298374,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import 'package:testing/services/api_services.dart';\n \n void main() {\n   test(\n-    'ApiTest',\n+    'Api test',\n     () async {\n       final _apiTest = ApiServices();\n       WeatherModel _res = await _apiTest.getCityWeather('sydney');\n \n"
+                },
+                {
+                    "date": 1636500323648,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,8 @@\n     () async {\n       final _apiTest = ApiServices();\n       WeatherModel _res = await _apiTest.getCityWeather('sydney');\n \n-      expect(_res.cod, 200);\n+      expect(_res.cod, 201);\n     },\n   );\n }\n"
+                },
+                {
+                    "date": 1636500341067,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,8 @@\n     () async {\n       final _apiTest = ApiServices();\n       WeatherModel _res = await _apiTest.getCityWeather('sydney');\n \n-      expect(_res.cod, 201);\n+      expect(_res.cod, 200);\n     },\n   );\n }\n"
+                },
+                {
+                    "date": 1636500382655,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,8 +8,9 @@\n     () async {\n       final _apiTest = ApiServices();\n       WeatherModel _res = await _apiTest.getCityWeather('sydney');\n \n+      expect(_res, WeatherModel);\n       expect(_res.cod, 200);\n     },\n   );\n }\n"
+                },
+                {
+                    "date": 1636500405390,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     () async {\n       final _apiTest = ApiServices();\n       WeatherModel _res = await _apiTest.getCityWeather('sydney');\n \n-      expect(_res, WeatherModel);\n+      expect(_res.name, 'Sydney');\n       expect(_res.cod, 200);\n     },\n   );\n }\n"
+                }
+            ],
+            "date": 1636499630413,
+            "name": "Commit-0",
+            "content": "import 'package:flutter_test/flutter_test.dart';\nimport 'package:testing/services/api_services.dart';\n\nvoid main() {\n  test(\n    'ApiTest',\n    () {\n      final _apiTest = ApiServices();\n      expect(_apiTest.getCityWeather('sydney'), isInstanceOf<Future<String>>());\n    },\n  );\n}\n"
+        }
+    ]
+}
