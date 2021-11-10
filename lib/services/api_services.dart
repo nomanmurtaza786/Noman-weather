@@ -25,7 +25,8 @@ class ApiServices {
         showErrorSnackBar('No Internet Connection');
       }
       http.Response response = await http
-          .get(Uri.parse('${_baseUrl}q=$city&appid=$apiKey&units=metric'));
+          .get(Uri.parse('${_baseUrl}q=$city&appid=$apiKey&units=metric'))
+          .timeout(timeout);
       return _processResponse(response);
     } on SocketException catch (_) {
       throw const SocketException('No Internet Connection');
@@ -45,11 +46,13 @@ class ApiServices {
       }
       Position? position = await getUserLocation();
 
-      http.Response response = await http.get(Uri.parse(
-          '$_baseUrl&lat=${position?.latitude ?? 0.0}&lon=${position?.longitude ?? 0.0}&appid=$apiKey&units=metric'));
+      http.Response response = await http
+          .get(Uri.parse(
+              '$_baseUrl&lat=${position?.latitude ?? 0.0}&lon=${position?.longitude ?? 0.0}&appid=$apiKey&units=metric'))
+          .timeout(timeout);
       return _processResponse(response);
     } on TimeoutException catch (_) {
-      throw Exception('Timeout');
+      throw TimeoutException('Request Timed Out');
     } on SocketException catch (_) {
       throw const SocketException('No Internet Connection');
     } catch (e) {
