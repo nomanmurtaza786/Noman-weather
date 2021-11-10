@@ -1,0 +1,18 @@
+{
+    "sourceFile": "lib/main.dart",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1636502452114,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1636502452114,
+            "name": "Commit-0",
+            "content": "import 'package:flutter/material.dart';\r\nimport 'package:flutter/services.dart';\r\nimport 'package:get/get.dart';\r\nimport 'package:testing/screen/weather_home_screen.dart';\r\nimport 'package:testing/theme/theme.dart';\r\n\r\nimport 'binding/binding.dart';\r\n\r\nFuture<void> main() async {\r\n  WidgetsFlutterBinding.ensureInitialized();\r\n  runApp(MyApp());\r\n}\r\n\r\nclass MyApp extends StatelessWidget {\r\n  @override\r\n  Widget build(BuildContext context) {\r\n    SystemChrome.setPreferredOrientations([\r\n      DeviceOrientation.portraitUp,\r\n      DeviceOrientation.portraitDown,\r\n    ]);\r\n    return GetMaterialApp(\r\n      debugShowCheckedModeBanner: false,\r\n      debugShowMaterialGrid: false,\r\n      title: 'Weather App',\r\n      defaultTransition: Transition.rightToLeft,\r\n      themeMode: ThemeMode.system,\r\n      theme: MyTheme.lightTheme(context),\r\n      darkTheme: MyTheme.darkTheme(context),\r\n      home: const WeatherScreen(),\r\n      initialBinding: DataBinding(),\r\n    );\r\n  }\r\n}\r\n"
+        }
+    ]
+}
