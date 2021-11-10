@@ -22,15 +22,15 @@ class ApiServices {
       bool _connection = await InternetConnectionChecker().hasConnection;
 
       if (!_connection) {
-        return showErrorSnackBar('No Internet Connection');
+        showErrorSnackBar('No Internet Connection');
       }
       http.Response response = await http
           .get(Uri.parse('${_baseUrl}q=$city&appid=$apiKey&units=metric'));
       return _processResponse(response);
-    } on TimeoutException catch (_) {
-      throw Exception('Timeout');
     } on SocketException catch (_) {
-      throw Exception('No Internet');
+      throw const SocketException('No Internet Connection');
+    } on TimeoutException catch (_) {
+      throw TimeoutException('Request Timed Out');
     } catch (e) {
       throw Exception(e.toString());
     }
@@ -41,7 +41,7 @@ class ApiServices {
       bool _connection = await InternetConnectionChecker().hasConnection;
 
       if (!_connection) {
-        return showErrorSnackBar('No Internet Connection');
+        showErrorSnackBar('No Internet Connection');
       }
       Position? position = await getUserLocation();
 
@@ -51,7 +51,7 @@ class ApiServices {
     } on TimeoutException catch (_) {
       throw Exception('Timeout');
     } on SocketException catch (_) {
-      throw Exception('No Internet');
+      throw const SocketException('No Internet Connection');
     } catch (e) {
       throw Exception(e.toString());
     }

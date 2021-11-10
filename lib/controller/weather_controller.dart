@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import 'package:testing/constant/constant.dart';
@@ -9,9 +10,9 @@ class WeatherController extends GetxController with StateMixin<WeatherModel> {
   String? weatherIcon;
   final ApiServices _apiServices = ApiServices();
   WeatherModel? storeData;
-  TextEditingController searchText= TextEditingController();
+  TextEditingController searchText = TextEditingController();
 
-  var text="".obs;
+  var text = "".obs;
 
   @override
   void onInit() {
@@ -19,26 +20,29 @@ class WeatherController extends GetxController with StateMixin<WeatherModel> {
     getLocationWeather();
   }
 
-
-  Future getLocationWeather() async{
+  Future getLocationWeather() async {
     try {
-
       storeData = await _apiServices.getLocationWeather();
       return change(storeData, status: RxStatus.success());
-    } on Exception catch (e) {
+    } on SocketException catch (err) {
+      return change(null, status: RxStatus.error(err.toString()));
+    } on TimeoutException catch (err) {
+      return change(null, status: RxStatus.error(err.toString()));
+    } catch (e) {
       showErrorSnackBar(e.toString());
     }
   }
-
-
 
   Future getCityData() async {
     try {
       storeData = await _apiServices.getCityWeather(text.value.toString());
       return change(storeData, status: RxStatus.success());
-    } on Exception catch (e) {
+    } on SocketException catch (err) {
+      return change(null, status: RxStatus.error(err.toString()));
+    } on TimeoutException catch (err) {
+      return change(null, status: RxStatus.error(err.toString()));
+    } catch (e) {
       showErrorSnackBar(e.toString());
     }
   }
-
 }

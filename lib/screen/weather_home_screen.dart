@@ -125,6 +125,11 @@ class WeatherScreen extends GetView<WeatherController> {
             ],
           );
         },
+        onError: (e) {
+          return Center(
+            child: e.toString().text.headline4(context).make(),
+          );
+        },
       ),
     );
   }
