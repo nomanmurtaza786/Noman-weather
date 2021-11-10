@@ -23,6 +23,7 @@ class ApiServices {
 
       if (!_connection) {
         showErrorSnackBar('No Internet Connection');
+        return;
       }
       http.Response response = await http
           .get(Uri.parse('${_baseUrl}q=$city&appid=$apiKey&units=metric'))
@@ -43,12 +44,16 @@ class ApiServices {
 
       if (!_connection) {
         showErrorSnackBar('No Internet Connection');
+        return;
       }
       Position? position = await getUserLocation();
+      if (position == null) {
+        return;
+      }
 
       http.Response response = await http
           .get(Uri.parse(
-              '$_baseUrl&lat=${position?.latitude ?? 0.0}&lon=${position?.longitude ?? 0.0}&appid=$apiKey&units=metric'))
+              '$_baseUrl&lat=${position.latitude}&lon=${position.longitude}&appid=$apiKey&units=metric'))
           .timeout(timeout);
       return _processResponse(response);
     } on TimeoutException catch (_) {
@@ -68,7 +73,7 @@ WeatherModel _processResponse(http.Response response) {
       return responseJson;
 
     case 404:
-      throw Exception('City not found');
+      throw Exception('City Not Found');
 
     case 401:
       throw Exception('Invalid API key');

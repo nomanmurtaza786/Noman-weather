@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 8,
+            "activePatchIndex": 9,
             "patches": [
                 {
                     "date": 1636421819472,
@@ -40,6 +40,10 @@
                 {
                     "date": 1636517866063,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,34 +1,30 @@\n import 'package:geolocator/geolocator.dart';\n import 'package:testing/constant/constant.dart';\n \n-Future<Position> getUserLocation() async {\n+Future getUserLocation() async {\n   bool serviceEnabled;\n   LocationPermission permission;\n-\n-  // Test if location services are enabled.\n   serviceEnabled = await Geolocator.isLocationServiceEnabled();\n   if (!serviceEnabled) {\n-    // Location services are not enabled don't continue\n-    // accessing the position and request users of the\n-    // App to enable the location services.\n-    showErrorSnackbar('Location services are not enabled');\n-\n-    return Future.error('Location services are disabled.');\n+    return;\n+    // return Future.error('Location services are disabled.');\n   }\n \n   permission = await Geolocator.checkPermission();\n   if (permission == LocationPermission.denied) {\n     permission = await Geolocator.requestPermission();\n     if (permission == LocationPermission.denied) {\n-      showErrorSnackbar('Location permission is denied.');\n-      return Future.error('Location permissions are denied');\n+      showErrorSnackBar('Location Service Denied');\n+      return;\n+      // return Future.error('Location permissions are denied');\n     }\n   }\n \n   if (permission == LocationPermission.deniedForever) {\n-    showErrorSnackbar('Location permission is denied forever.');\n-    return Future.error('Location permissions are denied forever.');\n+    showErrorSnackBar('Location Service Denied forever');\n+    return;\n+    // return Future.error('Location permissions are denied forever.');\n   }\n \n   Position position = await Geolocator.getCurrentPosition(\n       desiredAccuracy: LocationAccuracy.low);\n"
+                },
+                {
+                    "date": 1636553129254,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -15,9 +15,8 @@\n     permission = await Geolocator.requestPermission();\n     if (permission == LocationPermission.denied) {\n       showErrorSnackBar('Location Service Denied');\n       return;\n-      // return Future.error('Location permissions are denied');\n     }\n   }\n \n   if (permission == LocationPermission.deniedForever) {\n"
                 }
             ],
             "date": 1636421819472,

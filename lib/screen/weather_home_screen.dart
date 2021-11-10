@@ -45,25 +45,25 @@ class WeatherScreen extends GetView<WeatherController> {
     return Expanded(
       child: controller.obx(
         (data) {
-          final stores = controller.storeData;
-          var s = stores!.weather!.single.icon;
+          //int mintemp = data?.main?.tempMin.toString() ?? "0.0";
+          String maintemp = data?.main?.temp?.toInt().toString() ?? "0";
+
+          String city = data?.name ?? "";
+          String country = data?.sys?.country ?? "";
+
+          String? _icon = data?.weather?.single.icon;
           return Column(
             children: [
               const Spacer(),
-              s!.isEmpty
-                  ? Image.network(
-                      "http://openweathermap.org/img/wn/$s@2x.png",
-                    )
-                  : const SizedBox.shrink(),
+              if (!_icon.isEmptyOrNull) ...{
+                Image.network(
+                  "http://openweathermap.org/img/wn/$_icon@2x.png",
+                )
+              },
               Stack(
                 clipBehavior: Clip.none,
                 children: [
-                  (stores.main?.temp ?? 0)
-                      .toInt()
-                      .toString()
-                      .text
-                      .headline1(context)
-                      .make(),
+                  (maintemp).text.headline1(context).make(),
                   Positioned(
                       right: -25, top: 5, child: "o".text.size(30).bold.make()),
                 ],
@@ -73,14 +73,14 @@ class WeatherScreen extends GetView<WeatherController> {
                 children: [
                   TemperatureMinMax(
                     name: "min",
-                    temp: (stores.main?.tempMin ?? 0).toInt(),
+                    temp: (data?.main?.tempMin ?? 0).toInt(),
                   ),
                   const SizedBox(
                     width: 30,
                   ),
                   TemperatureMinMax(
                     name: "max",
-                    temp: (stores.main?.tempMax ?? 0).toInt(),
+                    temp: (data?.main?.tempMax ?? 0).toInt(),
                   ),
                 ],
               ),
@@ -89,25 +89,20 @@ class WeatherScreen extends GetView<WeatherController> {
               ),
               Wrap(
                 children: [
-                  (stores.name.toString() +
-                          ', ' +
-                          stores.sys!.country.toString())
-                      .text
-                      .headline4(context)
-                      .make(),
+                  (city + ', ' + country).text.headline4(context).make(),
                 ],
               ),
               const Spacer(),
               WeatherTile(
                 title: "Wind Speed",
-                subtitle: (stores.wind?.speed ?? 0).toString() + "km/h",
+                subtitle: (data?.wind?.speed ?? 0).toString() + "km/h",
               ),
               const SizedBox(
                 height: 15,
               ),
               WeatherTile(
                 title: "Feels Like",
-                subtitle: (stores.main?.feelsLike ?? 0).toString(),
+                subtitle: (data?.main?.feelsLike ?? 0).toString(),
               ),
               ElevatedButton(
                       key: const Key("ViewDetails"),
@@ -117,7 +112,7 @@ class WeatherScreen extends GetView<WeatherController> {
                       ),
                       onPressed: () {
                         Get.to(() => WeatherDetailScreen(
-                              weatherData: stores,
+                              weatherData: data,
                             ));
                       },
                       child: "View Details".text.make())

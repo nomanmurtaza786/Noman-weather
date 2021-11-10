@@ -21,6 +21,7 @@ class WeatherController extends GetxController with StateMixin<WeatherModel> {
   }
 
   Future getLocationWeather() async {
+    change(null, status: RxStatus.loading());
     try {
       storeData = await _apiServices.getLocationWeather();
       return change(storeData, status: RxStatus.success());
@@ -34,6 +35,7 @@ class WeatherController extends GetxController with StateMixin<WeatherModel> {
   }
 
   Future getCityData() async {
+    change(null, status: RxStatus.loading());
     try {
       storeData = await _apiServices.getCityWeather(text.value.toString());
       return change(storeData, status: RxStatus.success());

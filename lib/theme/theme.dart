@@ -12,10 +12,18 @@ class MyTheme {
         iconTheme: IconThemeData(color: Colors.black),
       ),
       textTheme: TextTheme(
-        headline1: GoogleFonts.raleway(fontSize: 80, fontWeight: FontWeight.bold, color: kSecondaryLightColor),
-        headline2: GoogleFonts.raleway(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
-        headline3: GoogleFonts.raleway(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
-        headline4: GoogleFonts.raleway(fontSize: 16, fontWeight: FontWeight.w500,),
+        headline1: GoogleFonts.raleway(
+            fontSize: 80,
+            fontWeight: FontWeight.bold,
+            color: kSecondaryLightColor),
+        headline2: GoogleFonts.raleway(
+            fontSize: 16, fontWeight: FontWeight.bold, color: Colors.black),
+        headline3: GoogleFonts.raleway(
+            fontSize: 16, fontWeight: FontWeight.w700, color: Colors.black),
+        headline4: GoogleFonts.raleway(
+          fontSize: 16,
+          fontWeight: FontWeight.w500,
+        ),
       ),
       iconTheme: const IconThemeData(
         color: Colors.black,
@@ -34,18 +42,24 @@ class MyTheme {
         appBarTheme: const AppBarTheme(
           color: kPrimaryDarkColor,
         ),
-    textTheme: TextTheme(
-      headline1: GoogleFonts.raleway(fontSize: 80, fontWeight: FontWeight.bold, color: kSecondaryLightColor),
-      headline2: GoogleFonts.raleway(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
-      headline3: GoogleFonts.raleway(fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white),
-      headline4: GoogleFonts.raleway(fontSize: 16, fontWeight: FontWeight.w500,color: Colors.white),
-    ),
+        textTheme: TextTheme(
+          headline1: GoogleFonts.raleway(
+              fontSize: 80,
+              fontWeight: FontWeight.bold,
+              color: kSecondaryLightColor),
+          headline2: GoogleFonts.raleway(
+              fontSize: 16, fontWeight: FontWeight.bold, color: Colors.white),
+          headline3: GoogleFonts.raleway(
+              fontSize: 16, fontWeight: FontWeight.w700, color: Colors.white),
+          headline4: GoogleFonts.raleway(
+              fontSize: 16, fontWeight: FontWeight.w500, color: Colors.white),
+        ),
         iconTheme: const IconThemeData(
           color: Colors.white,
         ),
         elevatedButtonTheme: _elevatedButtonTheme,
         cardTheme: _cardTheme,
-    canvasColor: kSecondaryLightColor,
+        canvasColor: kSecondaryLightColor,
       );
 
   static final ElevatedButtonThemeData _elevatedButtonTheme =
@@ -58,7 +72,7 @@ class MyTheme {
   );
 
   static final CardTheme _cardTheme = CardTheme(
-      elevation: 3,
+      elevation: 2,
       margin: EdgeInsets.zero,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)));
 }

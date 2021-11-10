@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 7,
+            "activePatchIndex": 21,
             "patches": [
                 {
                     "date": 1636423152396,
@@ -36,6 +36,62 @@
                 {
                     "date": 1636520271571,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -36,9 +36,13 @@\n   Future getCityData() async {\r\n     try {\r\n       storeData = await _apiServices.getCityWeather(text.value.toString());\r\n       return change(storeData, status: RxStatus.success());\r\n-    } on Exception catch (e) {\r\n+    } on SocketException catch (err) {\r\n+      return change(null, status: RxStatus.error(err.toString()));\r\n+    } on TimeoutException catch (err) {\r\n+      return change(null, status: RxStatus.error(err.toString()));\r\n+    } catch (e) {\r\n       showErrorSnackBar(e.toString());\r\n     }\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1636546230948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \r\n   Future getLocationWeather() async {\r\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n-      return change(storeData, status: RxStatus.success());\r\n+      return change(storeData, status: RxStatus.loadingMore());\r\n     } on SocketException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n"
+                },
+                {
+                    "date": 1636546297875,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,11 +22,11 @@\n \r\n   Future getLocationWeather() async {\r\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n-      return change(storeData, status: RxStatus.loadingMore());\r\n+      return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n-      return change(null, status: RxStatus.error(err.toString()));\r\n+      return change(null, status: RxStatus.loadingMore());\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (e) {\r\n       showErrorSnackBar(e.toString());\r\n"
+                },
+                {
+                    "date": 1636546556013,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n       return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n-      return change(null, status: RxStatus.loadingMore());\r\n+      return change(null, status: RxStatus.error(err.toString()));\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (e) {\r\n       showErrorSnackBar(e.toString());\r\n"
+                },
+                {
+                    "date": 1636546830043,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n       return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n-      return change(null, status: RxStatus.error(err.toString()));\r\n+      //return change(null, status: RxStatus.error(err.toString()));\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (e) {\r\n       showErrorSnackBar(e.toString());\r\n"
+                },
+                {
+                    "date": 1636546937205,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n       return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n-      //return change(null, status: RxStatus.error(err.toString()));\r\n+      return change(null, status: RxStatus.success());\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (e) {\r\n       showErrorSnackBar(e.toString());\r\n"
+                },
+                {
+                    "date": 1636548501610,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n       return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n-      return change(null, status: RxStatus.success());\r\n+      return change(null, status: RxStatus.error(err.toString()));\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (e) {\r\n       showErrorSnackBar(e.toString());\r\n"
+                },
+                {
+                    "date": 1636553322302,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,8 +29,9 @@\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (e) {\r\n       showErrorSnackBar(e.toString());\r\n+      return change(null, status: RxStatus.error(e.toString()));\r\n     }\r\n   }\r\n \r\n   Future getCityData() async {\r\n"
+                },
+                {
+                    "date": 1636553393017,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (e) {\r\n-      showErrorSnackBar(e.toString());\r\n+      //showErrorSnackBar(e.toString());\r\n       return change(null, status: RxStatus.error(e.toString()));\r\n     }\r\n   }\r\n \r\n"
+                },
+                {
+                    "date": 1636555283320,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n \r\n   Future getLocationWeather() async {\r\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n-      return change(storeData, status: RxStatus.success());\r\n+      return change(null, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n"
+                },
+                {
+                    "date": 1636555726609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n       return change(null, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n-      return change(null, status: RxStatus.error(err.toString()));\r\n+      return change(storeData, status: RxStatus.error(err.toString()));\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (e) {\r\n       //showErrorSnackBar(e.toString());\r\n"
+                },
+                {
+                    "date": 1636556725791,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,18 +20,18 @@\n     getLocationWeather();\r\n   }\r\n \r\n   Future getLocationWeather() async {\r\n+    change(null, status: RxStatus.loading());\r\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n-      return change(null, status: RxStatus.success());\r\n+      return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n-      return change(storeData, status: RxStatus.error(err.toString()));\r\n+      return change(null, status: RxStatus.error(err.toString()));\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (e) {\r\n-      //showErrorSnackBar(e.toString());\r\n-      return change(null, status: RxStatus.error(e.toString()));\r\n+      showErrorSnackBar(e.toString());\r\n     }\r\n   }\r\n \r\n   Future getCityData() async {\r\n"
+                },
+                {
+                    "date": 1636556746764,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n     getLocationWeather();\r\n   }\r\n \r\n   Future getLocationWeather() async {\r\n-    change(null, status: RxStatus.loading());\r\n+    change(null, status: RxStatus.loadingMore());\r\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n       return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n"
+                },
+                {
+                    "date": 1636556784109,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n     getLocationWeather();\r\n   }\r\n \r\n   Future getLocationWeather() async {\r\n-    change(null, status: RxStatus.loadingMore());\r\n+    change(null, status: RxStatus.loading());\r\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n       return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n"
+                },
+                {
+                    "date": 1636556863462,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,8 +34,9 @@\n     }\r\n   }\r\n \r\n   Future getCityData() async {\r\n+    change(null, status: RxStatus.loading());\r\n     try {\r\n       storeData = await _apiServices.getCityWeather(text.value.toString());\r\n       return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n"
                 }
             ],
             "date": 1636423152396,

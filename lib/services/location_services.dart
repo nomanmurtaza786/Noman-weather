@@ -16,7 +16,6 @@ Future getUserLocation() async {
     if (permission == LocationPermission.denied) {
       showErrorSnackBar('Location Service Denied');
       return;
-      // return Future.error('Location permissions are denied');
     }
   }
 
