@@ -73,7 +73,7 @@ _processResponse(http.Response response) {
       return responseJson;
 
     case 404:
-      showErrorSnackBar('City found');
+      showErrorSnackBar('City not found');
       break;
     case 401:
       showErrorSnackBar('Invalid API key');
