@@ -25,12 +25,8 @@ class WeatherController extends GetxController with StateMixin<WeatherModel> {
     try {
       storeData = await _apiServices.getLocationWeather();
       return change(storeData, status: RxStatus.success());
-    } on SocketException catch (err) {
-      return change(null, status: RxStatus.error(err.toString()));
-    } on TimeoutException catch (err) {
-      return change(null, status: RxStatus.error(err.toString()));
-    } catch (e) {
-      showErrorSnackBar(e.toString());
+    } catch (err) {
+      change(null, status: RxStatus.error(err.toString()));
     }
   }
 
@@ -39,12 +35,9 @@ class WeatherController extends GetxController with StateMixin<WeatherModel> {
     try {
       storeData = await _apiServices.getCityWeather(text.value.toString());
       return change(storeData, status: RxStatus.success());
-    } on SocketException catch (err) {
-      return change(null, status: RxStatus.error(err.toString()));
-    } on TimeoutException catch (err) {
-      return change(null, status: RxStatus.error(err.toString()));
-    } catch (e) {
-      showErrorSnackBar(e.toString());
+    } catch (err) {
+      showErrorSnackBar(err.toString());
+      change(null, status: RxStatus.error(err.toString()));
     }
   }
 }

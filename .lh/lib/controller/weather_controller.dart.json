@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 21,
+            "activePatchIndex": 24,
             "patches": [
                 {
                     "date": 1636423152396,
@@ -92,6 +92,18 @@
                 {
                     "date": 1636556863462,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -34,8 +34,9 @@\n     }\r\n   }\r\n \r\n   Future getCityData() async {\r\n+    change(null, status: RxStatus.loading());\r\n     try {\r\n       storeData = await _apiServices.getCityWeather(text.value.toString());\r\n       return change(storeData, status: RxStatus.success());\r\n     } on SocketException catch (err) {\r\n"
+                },
+                {
+                    "date": 1636557173119,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -42,9 +42,10 @@\n     } on SocketException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n     } on TimeoutException catch (err) {\r\n       return change(null, status: RxStatus.error(err.toString()));\r\n-    } catch (e) {\r\n-      showErrorSnackBar(e.toString());\r\n+    } catch (err) {\r\n+      showErrorSnackBar(err.toString());\r\n+      change(null, status: RxStatus.error(err.toString()));\r\n     }\r\n   }\r\n }\r\n"
+                },
+                {
+                    "date": 1636557198595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -38,12 +38,8 @@\n     change(null, status: RxStatus.loading());\r\n     try {\r\n       storeData = await _apiServices.getCityWeather(text.value.toString());\r\n       return change(storeData, status: RxStatus.success());\r\n-    } on SocketException catch (err) {\r\n-      return change(null, status: RxStatus.error(err.toString()));\r\n-    } on TimeoutException catch (err) {\r\n-      return change(null, status: RxStatus.error(err.toString()));\r\n     } catch (err) {\r\n       showErrorSnackBar(err.toString());\r\n       change(null, status: RxStatus.error(err.toString()));\r\n     }\r\n"
+                },
+                {
+                    "date": 1636557294922,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,14 +24,10 @@\n     change(null, status: RxStatus.loading());\r\n     try {\r\n       storeData = await _apiServices.getLocationWeather();\r\n       return change(storeData, status: RxStatus.success());\r\n-    } on SocketException catch (err) {\r\n-      return change(null, status: RxStatus.error(err.toString()));\r\n-    } on TimeoutException catch (err) {\r\n-      return change(null, status: RxStatus.error(err.toString()));\r\n-    } catch (e) {\r\n-      showErrorSnackBar(e.toString());\r\n+    } catch (err) {\r\n+      change(null, status: RxStatus.error(err.toString()));\r\n     }\r\n   }\r\n \r\n   Future getCityData() async {\r\n"
                 }
             ],
             "date": 1636423152396,
