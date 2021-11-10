@@ -66,17 +66,18 @@ class ApiServices {
   }
 }
 
-WeatherModel _processResponse(http.Response response) {
+_processResponse(http.Response response) {
   switch (response.statusCode) {
     case 200:
       WeatherModel responseJson = weatherFromJson(response.body);
       return responseJson;
 
     case 404:
-      throw Exception('City Not Found');
-
+      showErrorSnackBar('City found');
+      break;
     case 401:
-      throw Exception('Invalid API key');
+      showErrorSnackBar('Invalid API key');
+      break;
 
     case 500:
       throw Exception('Internal Server Error');
